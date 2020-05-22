@@ -78,6 +78,7 @@ class DoublyLinkedList:
 
     def __len__(self):  # overrides a built-in python func and lets us call the length function that we use for arrays on our linked list. len(linkedlist) https://youtu.be/Fe-QUooDw-8?t=4234
         return self.length
+    
 
     """Wraps the given value in a ListNode and inserts it
     as the new head of the list. Don't forget to handle
@@ -182,7 +183,23 @@ class DoublyLinkedList:
     def remove_from_tail(self):
         #13
         value = self.tail.value
-        self.delete(self.tail)
+        # self.delete(self.tail)
+        # not working with delete()
+        # if head and tail are the same(1 node)
+        if self.head == self.tail:
+           self.head = None
+           self.tail = None 
+        # if 0 nodes
+        if not self.tail:
+            return 
+
+        # if more than 1 node
+        else: 
+            self.tail = self.tail.prev
+            self.tail.next = None
+
+        self.length -= 1
+
         return value
 
     """Removes the input node from its current spot in the 
@@ -194,6 +211,12 @@ class DoublyLinkedList:
             return
         self.add_to_head(node.value)
         self.delete(node)
+
+        """
+        value = node.value
+        self.delete(node)
+        self.add_to_head(value)
+        """
 
     """Removes the input node from its current spot in the 
     List and inserts it as the new tail node of the List."""
@@ -265,6 +288,7 @@ class DoublyLinkedList:
     """Returns the highest value currently in the list"""
 
     def get_max(self):
+        """
         #16
         # How to get max
         # create max var
@@ -278,3 +302,47 @@ class DoublyLinkedList:
             current = current.next
         # return max found
         return max
+        """
+
+    # walk through the entire list
+    # keep track of the biggest value we've found
+
+        highest_value = self.head.value
+        current_node = self.head
+        
+        while current_node is not None:
+            if current_node.value > highest_value:
+                highest_value = current_node.value
+            
+            current_node = current_node.next
+
+        return highest_value
+
+    def find_middle(self):
+        middle = self.head
+        end = self.head
+
+        while end != None and end.next.next !=None:
+            # end = end.next.next
+            # middle = middle.next
+            end = end.next.next
+            middle = middle.net        
+            
+        return middle
+    
+    # head should now be the tailj
+    # tail should now be head
+    # no recursion, no other data structure
+    def revers_list(self):
+        pass
+
+# dll = DoublyLinkedList()
+# dll.add_to_tail(1)
+# dll.add_to_tail(1)
+# dll.add_to_tail(1)
+# dll.add_to_tail(1)
+# dll.add_to_tail(1)
+# dll.add_to_tail(1)
+
+# middle = dll.find_middle()
+# print(middle.value, middle.value == 3)
