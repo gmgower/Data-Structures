@@ -174,7 +174,7 @@ class DoublyLinkedList:
             # 9 resvers
             new_node.prev = self.tail
             self.head.next = new_node
-            self.tail = new_node
+        self.tail = new_node
 
     """Removes the List's current tail node, making the 
     current tail's previous node the new tail of the List.
@@ -183,15 +183,16 @@ class DoublyLinkedList:
     def remove_from_tail(self):
         #13
         value = self.tail.value
+        # if 0 nodes
+        if not self.tail:
+            return
+
         # self.delete(self.tail)
         # not working with delete()
         # if head and tail are the same(1 node)
-        if self.head == self.tail:
+        elif self.head == self.tail:
            self.head = None
            self.tail = None 
-        # if 0 nodes
-        if not self.tail:
-            return 
 
         # if more than 1 node
         else: 
@@ -207,63 +208,67 @@ class DoublyLinkedList:
 
     def move_to_front(self, node):
         #14
-        if node is self.head:
-            return
-        self.add_to_head(node.value)
-        self.delete(node)
-
-        """
+        # if node is self.head:
+        #     return
+        # self.add_to_head(node.value)
+        # self.delete(node)        
         value = node.value
         self.delete(node)
         self.add_to_head(value)
-        """
+        
 
     """Removes the input node from its current spot in the 
     List and inserts it as the new tail node of the List."""
 
     def move_to_end(self, node):
         #15
-        if node is self.tail:
-            return 
-        self.add_to_tail(node.value)
-        self.delete(node)
+        # if node is self.tail:
+        #     return 
+        # self.delete(node)
+        # self.add_to_tail(node.value)
+        value = node.value
+        self.delete(node) 
+        self.add_to_tail(value)
 
     """Removes a node from the list and handles cases where
     the node was the head or the tail"""
 
-    def delete(self, node):
-        """
-            self.length -= 1
-        
-            # if list is empty
-            if not self.head:
-                print("you got nothing on me!")
-                return 
-        
-            # if list has just one node is head
-            if self.head == self.tail:
-                self.head = None
-                self.tail = None
-            
-            # we have at least two node, and the node we want to delete is the head
-            if node == self.head:
-                self.head = node.next
-                self.head.prev = None
-        
-            # we have at lest two nodes, and the node we want to delete is the tail
-            if node == self.tail:
-                self.tail = node.prev
-                self.tail.net = None
-        
-            else:
-                node.delete() # not calling delete() 
-        """
+    def delete(self, node):        
+        # if list is empty
 
-        """ 10
+        # self.length -= 1
+
+        # if not self.head and not self.tail:
+        #     print("you got nothing on me!")
+        #     return     
+
+        # # if list has just one node is head
+        # elif self.head == self.tail:
+        #      self.head = None
+        #      self.tail = None
+        
+        # # we have at least two node, and the node we want to delete is the head
+        # elif node == self.head:
+        #      self.head = node.next
+        #      self.head.prev = None
+        #     # node.delete()
+    
+        # # we have at lest two nodes, and the node we want to delete is the tail
+        # elif node == self.tail:
+        #      self.tail = node.prev
+        #      self.tail.next = None
+        #     # node.delete()
+    
+        # else:
+        #      node.delete() # not calling delete        
+
+        """ 
+        10
         Why do you want to do delete first? So we can use the del func.
 
         """
 
+        
         # 11 Planning
         # TODO: Do we need error checking if node is not in list?
         # update length
@@ -283,7 +288,7 @@ class DoublyLinkedList:
         # It's in the middle
         else:
             node.delete()
-
+        
 
     """Returns the highest value currently in the list"""
 
@@ -330,9 +335,10 @@ class DoublyLinkedList:
             
         return middle
     
-    # head should now be the tailj
+    # head should now be the tail
     # tail should now be head
     # no recursion, no other data structure
+    
     def revers_list(self):
         pass
 
