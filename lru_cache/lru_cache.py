@@ -1,3 +1,9 @@
+import sys
+
+sys.path.append('../doubly_linked_list')
+
+from doubly_linked_list import DoublyLinkedList
+
 class LRUCache:
     """
     Our LRUCache class keeps track of the max number of nodes it
@@ -5,9 +11,31 @@ class LRUCache:
     linked list that holds the key-value entries in the correct
     order, as well as a storage dict that provides fast access
     to every node stored in the cache.
+
+
+
+    node(h) -- node(g) -- node(d)
+    ----------------------------
+    | a b c d e f g             |
+
+
+    dict
+    {h: val} # guaranted to keeps stuff in order
     """
+    
     def __init__(self, limit=10):
-        pass
+        
+    # Keeps track
+        # 1. of the max number of nodes it can hold
+        self.max_nodes = limit
+        # 2. the current number of nodes it is holding
+        self.current_nodes = 0
+
+        # 3 a doubly-linked list that holds the key-value entries in the correctorder
+        self.dll = DoublyLinkedList()
+        # Create dic
+        self.dic = { }
+
 
     """
     Retrieves the value associated with the given key. Also
@@ -16,6 +44,8 @@ class LRUCache:
     Returns the value associated with the key or None if the
     key-value pair doesn't exist in the cache.
     """
+
+
     def get(self, key):
         pass
 
@@ -30,4 +60,4 @@ class LRUCache:
     the newly-specified value.
     """
     def set(self, key, value):
-        pass
+      pass
