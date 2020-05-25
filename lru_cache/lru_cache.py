@@ -33,8 +33,8 @@ class LRUCache:
 
         # 3 a doubly-linked list that holds the key-value entries in the correctorder
         self.dll = DoublyLinkedList()
-        # Create dic
-        self.dic = { }
+        # 4 Create dic
+        self.dict = { }
 
 
     """
@@ -47,7 +47,25 @@ class LRUCache:
 
 
     def get(self, key):
-        pass
+        # key is not in dit return NON
+        if key not in self.dict:
+            return None
+
+        node = self.dll.head
+        while node is not None:
+            if key == node.value[0]:
+                self.dll.move_to_front(node)
+                break
+            node = node.next
+
+        # return value
+        return self.dict[key]
+
+        """
+        my_dic = 
+        """
+
+
 
     """
     Adds the given key-value pair to the cache. The newly-
@@ -58,6 +76,54 @@ class LRUCache:
     case that the key already exists in the cache, we simply
     want to overwrite the old value associated with the key with
     the newly-specified value.
+
+    self.dll.head.value = (key, value)
+    self.dll.head.value = {key: value}
+    self.dll.head.value = [key, value]
     """
-    def set(self, key, value):
-      pass
+    def set(self, key, val):
+         # 7 if key is already stored, overwrite old value
+        if key in self.dict: 
+            # overwrite in dictionary
+            self.dict[key] = val
+            # overwrite in the dll
+            # iterate across and find the node to be updated
+            node = self.dll.head
+            while node is not None:
+                # check key equality
+                if key == node.value[0]:
+                    # and update the value
+                    node.value[1]= val
+                    # move to head of dll
+                    self.dll.move_to_front(node)
+                    break
+     
+                node = node.next
+
+        
+        # 5 handle case where we are already full, if full delete the tail
+        else:  
+            if self.current_nodes == self.max_nodes:
+                # delete something delete leaste recently used data
+                node = self.dll.tail
+                old_key = node.value[0]
+                self.dll.remove_from_tail()
+    
+                # delete from dict
+                del self.dict[old_key]
+                # similiar
+                # self.dict.pop(old_key)
+                self.current_nodes -= 1
+
+                # other add this key
+                # 6 add to cache
+            self.dict[key] = val
+            self.dll.add_to_head([key,val])
+        
+                # Need to keep track of the current nodes
+            self.current_nodes += 1
+        
+       
+
+
+    
