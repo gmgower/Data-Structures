@@ -52,9 +52,28 @@ class ListNode:
 # my_node.value 25
 # my_node.prev = 12
 
-
 # reference line 14 & 23
 # new_node = ListNode(100, my_node, None)
+
+
+my_node = ListNode(12)
+my_node.insert_after(25)
+my_node.insert_after(100)
+my_node.next.insert_after(99)
+
+def iterate_list(node):
+    while node is not None:
+        print(node.value)
+        node = node.next
+
+# iterate_list(my_node)
+# my_node = ListNode(12)
+# ||
+# my_node.next = ListNode(100)
+# ||
+# ListNode(99)
+# ||
+# ListNode(25)
 
 """Our doubly-linked list class. It holds references to
 the list's head and tail nodes."""
@@ -323,32 +342,33 @@ class DoublyLinkedList:
 
         return highest_value
 
+    # https://youtu.be/HadqhsdHZBE?t=2722
     def find_middle(self):
+        # start with two pointers
         middle = self.head
         end = self.head
 
-        while end != None and end.next.next !=None:
+        while end.next != None and end.next.next !=None:
             # end = end.next.next
             # middle = middle.next
             end = end.next.next
-            middle = middle.net        
-            
+            middle = middle.next
+
         return middle
     
     # head should now be the tail
     # tail should now be head
     # no recursion, no other data structure
-    
-    def revers_list(self):
+    def reverse_list(self):
         pass
 
-# dll = DoublyLinkedList()
-# dll.add_to_tail(1)
-# dll.add_to_tail(1)
-# dll.add_to_tail(1)
-# dll.add_to_tail(1)
-# dll.add_to_tail(1)
-# dll.add_to_tail(1)
+dll = DoublyLinkedList()
+dll.add_to_tail(1)
+dll.add_to_tail(2)
+dll.add_to_tail(3)
+dll.add_to_tail(4)
+dll.add_to_tail(5)
+# dll.add_to_tail(6)
 
-# middle = dll.find_middle()
-# print(middle.value, middle.value == 3)
+middle = dll.find_middle()
+print(middle.value)

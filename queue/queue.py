@@ -1,15 +1,17 @@
-# import sys
-# sys.path.append('../doubly_linked_list')
-# from doubly_linked_list import DoublyLinkedList, ListNode
-
 import sys
-# print(sys.path)
-print(type(sys.path))
-
 sys.path.append('../doubly_linked_list')
+from doubly_linked_list import DoublyLinkedList, ListNode
 
-from doubly_linked_list import DoublyLinkedList
+# import sys
+# # print(sys.path)
+# print(type(sys.path))
 
+# sys.path.append('../doubly_linked_list')
+
+# from doubly_linked_list import DoublyLinkedList
+
+
+#  https://youtu.be/HadqhsdHZBE?t=4307
 """
 A queue is a data structure whose primary purpose is to store and
 return elements in First In First Out order. 
@@ -22,11 +24,13 @@ return elements in First In First Out order.
 3. What is the difference between using an array vs. a linked list when 
    implementing a Queue?
 
+    #Python list as a queue
    ['a', 'b', 'c', 'd']
    
 Stretch: What if you could only use instances of your Stack class to implement the Queue?
          What would that look like? How many Stacks would you need? Try it!
 """
+
 class Queue:
     def __init__(self):
         self.size = 0
@@ -38,13 +42,13 @@ class Queue:
 
         # or iterate across the list and count as we go
         
-    # insert
+    # insert enqueue is constant time
     def enqueue(self, value): 
         self.storage.add_to_tail(value)
         self.size += 1
 
-    # remove
-    def dequeue(self): #remove
+    # remove dequeue is constant time
+    def dequeue(self):
         if self.size == 0:
             return None
 
@@ -53,3 +57,6 @@ class Queue:
         self.size -= 1
 
         return remove_value
+
+    # def peek():
+    #     pass
