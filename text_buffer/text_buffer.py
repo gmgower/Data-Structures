@@ -32,12 +32,13 @@
 
 import sys
 sys.path.append('../doubly_linked_list')
-from doubly_linked_list import DoublyLinkedList
+from doubly_linked_list import DoublyLinkedList, ListNode
 
 class TextBuffer:
     def __init__(self):
-        self.storage = DoublyLinkedList
+        self.storage = DoublyLinkedList()
 
+    # return entire string and print
     def __str__(self):
         string_to_return = ""
 
@@ -57,12 +58,11 @@ class TextBuffer:
         self.storage.tail = other_buffer.storage.tail
 
     def append(self, string_to_add):
-        
+        # each character is a node        
         for char in string_to_add:
             self.storage.add_to_tail(char)
 
     def prepend(self, string_to_add):
-        
         for char in string_to_add:
             self.storage.add_to_head(char)
 
@@ -77,8 +77,16 @@ class TextBuffer:
     def find_text(self, text_to_find):
         pass
 
+
+"hi how are you fine thank you"
+
 text = TextBuffer()
 text.append('hello')
+
+other_buffer = TextBuffer()
+other_buffer.append(' how are you')
+
+text.join(other_buffer)
 
 print(text)
 
