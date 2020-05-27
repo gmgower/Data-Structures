@@ -4,6 +4,8 @@ sys.path.append('../doubly_linked_list')
 
 from doubly_linked_list import DoublyLinkedList
 
+# https://youtu.be/Wp4YaxE4h1E
+
 class LRUCache:
     """
     Our LRUCache class keeps track of the max number of nodes it
@@ -68,12 +70,12 @@ class LRUCache:
 
 
     """
-    Adds the given key-value pair to the cache. The newly-
-    added pair should be considered the most-recently used
-    entry in the cache. If the cache is already at max capacity
-    before this entry is added, then the oldest entry in the
-    cache needs to be removed to make room. Additionally, in the
-    case that the key already exists in the cache, we simply
+    Adds the given key-value pair to the cache. 
+    The newly-added pair should be considered the most-recently used
+    entry in the cache. 
+    6. If the cache is already at max capacity before this entry is added, then the oldest entry in the
+    cache needs to be removed to make room. 
+    Additionally, in the case that the key already exists in the cache, we simply
     want to overwrite the old value associated with the key with
     the newly-specified value.
 
@@ -82,7 +84,7 @@ class LRUCache:
     self.dll.head.value = [key, value]
     """
     def set(self, key, val):
-         # 7 if key is already stored, overwrite old value
+         # 5 if key is already stored, overwrite old value
         if key in self.dict: 
             # overwrite in dictionary
             self.dict[key] = val
@@ -101,7 +103,7 @@ class LRUCache:
                 node = node.next
 
         
-        # 5 handle case where we are already full, if full delete the tail
+        # 6 handle case where we are already full, if full delete the tail
         else:  
             if self.current_nodes == self.max_nodes:
                 # delete something delete leaste recently used data
@@ -116,7 +118,7 @@ class LRUCache:
                 self.current_nodes -= 1
 
                 # other add this key
-                # 6 add to cache
+                # 7 add to cache
             self.dict[key] = val
             self.dll.add_to_head([key,val])
         

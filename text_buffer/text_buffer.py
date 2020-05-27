@@ -30,6 +30,8 @@
 # array, O(n)
 # Dll, O(n)
 
+# https://youtu.be/HadqhsdHZBE?t=5514
+
 import sys
 sys.path.append('../doubly_linked_list')
 from doubly_linked_list import DoublyLinkedList, ListNode

@@ -362,6 +362,15 @@ class DoublyLinkedList:
     def reverse_list(self):
         pass
 
+    def iterate_nodes(self):
+        total = 0 
+        node = self.head
+        while node is not None:
+            total += 1
+            node = node.next
+        
+        return total
+
 dll = DoublyLinkedList()
 dll.add_to_tail(1)
 dll.add_to_tail(2)
