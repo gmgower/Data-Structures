@@ -22,23 +22,21 @@ class BSTNode:
 
         # if no node to go to, (either left or right)
             # make the new node at that spot
-        cur_node = self
-        # print(cur_node)
         while True:
         # if smaller, go left
-            if value < cur_node.value:
-                if cur_node.left is None:
-                    cur_node.left = BSTNode(value)
-                    return cur_node.left
+            if value < self.value:
+                if self.left is None:
+                    self.left = BSTNode(value)
+                    return self.left
                 else:
-                    cur_node = cur_node.left
+                    self = self.left
             # if bigger, go right_rotate
-            elif value >= cur_node.value:
-                if cur_node.right is None:
-                    cur_node.right = BSTNode(value)
-                    return cur_node.right
+            elif value >= self.value:
+                if self.right is None:
+                    self.right = BSTNode(value)
+                    return self.right
                 else:
-                    cur_node = cur_node.right
+                    self = self.right
 
     # Return True if the tree contains the value
     # False if it does not
