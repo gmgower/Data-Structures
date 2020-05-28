@@ -53,6 +53,7 @@ class DoublyLinkedList:
         new_node = ListNode(value, None, None)
         self.length += 1
         # handle if list has a head
+        
         if self.head:
             new_node.next = self.head
             self.head.prev = new_node
