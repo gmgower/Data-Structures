@@ -16,9 +16,9 @@ return elements in Last In First Out order.
 """
 class Stack:
     def __init__(self):
-        self.size = 0
+        # self.size = 0
         self.storage = DoublyLinkedList()
-        # self.size = len(self.storage)
+        self.size = len(self.storage)
 
     def __len__(self):
         # return self.storage.length
